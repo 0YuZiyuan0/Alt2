@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 
 public class AltCalc {
-    public final static int MAX_INPUT_LENGTH = 23;
+    public final static int MAX_INPUT_LENGTH = 20;
 
 
     public static void main(String[] args) {
@@ -51,21 +51,23 @@ public class AltCalc {
         return "\"" + result + "\"";
     }
 
+
     private static String calculateDivide(String first, String second) {
         if (!validateDigit(second)) {
-            throw new RuntimeException("Второй аргумент должен быть целым числом");
+            throw new RuntimeException("Второй аргумент должен быть целым числом от 1 до 10.");
         }
         int newLength = first.length() / Integer.parseInt(second);
-        return removeQuotes(first).substring(0, newLength - 1);
+        return removeQuotes(first).substring(0, newLength);
     }
 
     private static String calculateMultiply(String first, String second) {
         if (!validateDigit(second)) {
-            throw new RuntimeException("Второй аргумент должен быть целым числом");
+            throw new RuntimeException("Второй аргумент должен быть целым числом от 1 до 10.");
         }
         String s = removeQuotes(first);
         return s.repeat(Integer.parseInt(second));
     }
+
 
     private static String calculateMinus(String first, String second) {
 
@@ -92,11 +94,11 @@ public class AltCalc {
 
     private static boolean validateDigit(String s) {
         try {
-            Integer.parseInt(s);
+            int number = Integer.parseInt(s);
+            return number >= 1 && number <= 10;
         } catch (NumberFormatException e) {
             return false;
         }
-        return true;
     }
 
     public static String removeQuotes(String s) {
