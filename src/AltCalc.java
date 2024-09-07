@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 
 public class AltCalc {
-    public final static int MAX_INPUT_LENGTH = 20;
-
-
+    public final static int MAX_INPUT_LENGTH = 23;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите выражение");
@@ -27,6 +25,13 @@ public class AltCalc {
         }
         if (!validateQuotes(strings.get(0))) {
             throw new RuntimeException("Первым аргументом выражения должна быть строка, заключенная в кавычки.");
+        }
+        String firstString = removeQuotes(strings.get(0));
+        if (firstString.length() > 10) {
+            throw new RuntimeException("Максимальное количество символов в операнде 10.");
+        }String secondString = removeQuotes(strings.get(2));
+        if (secondString.length() > 10) {
+            throw new RuntimeException("Максимальное количество символов в операнде 10.");
         }
         String result;
         switch (strings.get(1)) {
@@ -131,3 +136,4 @@ public class AltCalc {
         return result;
     }
 }
+
