@@ -4,14 +4,10 @@ import java.util.Scanner;
 
 
 public class AltCalc {
-    public final static int MAX_INPUT_LENGTH = 23;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите выражение");
         String input = scanner.nextLine();
-        if (input.length() > MAX_INPUT_LENGTH) {
-            throw new RuntimeException("Максимальная длина строки должна быть не больше 10 символов");
-        }
         String result = calculate(input);
         System.out.println("Результат: " + result);
 
